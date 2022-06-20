@@ -1,0 +1,10 @@
+{
+  "name": "password-strength-calculator",
+  "version": "1.0.0",
+  "description": "Provides the interface for a component used in the password strength calculation. Includes example implementations of the interface.",
+  "main": "index.js",
+  "repository": "https://github.com/blindnet-io/password-assistant",
+  "author": "Justin Boileau",
+  "license": "MIT",
+  "private": true
+}
