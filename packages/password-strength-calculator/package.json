@@ -1,10 +1,34 @@
 {
   "name": "password-strength-calculator",
   "version": "1.0.0",
-  "description": "Provides the interface for a component used in the password strength calculation. Includes example implementations of the interface.",
-  "main": "index.js",
-  "repository": "https://github.com/blindnet-io/password-assistant",
-  "author": "Justin Boileau",
+  "description": "Extensible password strength calculator, including Blindnet's implementation.",
+  "keywords": [
+    "blindnet",
+    "password"
+  ],
+  "author": "Justin Boileau <jboileau@ualberta.ca>",
+  "homepage": "https://github.com/blindnet-io/password-assistant#readme",
   "license": "MIT",
-  "private": true
+  "main": "lib/password-strength-calculator.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://jboileau99: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@github.com/blindnet-io/password-assistant.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1",
+    "tsc": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/blindnet-io/password-assistant/issues"
+  },
+  "dependencies": {
+    "fast-password-entropy-ts": "^1.0.0"
+  }
 }
