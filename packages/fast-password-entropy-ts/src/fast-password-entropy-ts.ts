@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 /**
  * Calculate the entropy of a string based on the size of the charset used and
@@ -11,8 +11,9 @@
  * @param   {number} length  is the length of the string.
  * @returns {number}         the calculated entropy.
  */
-const calcEntropy = (charset: number, length: number) =>
-  Math.round(length * Math.log(charset) / Math.LN2)
+var calcEntropy = function (charset, length) {
+    return Math.round(length * Math.log(charset) / Math.LN2);
+};
 
 /**
  * Standard character sets list.
@@ -23,23 +24,23 @@ const calcEntropy = (charset: number, length: number) =>
  *
  * @type {Array}
  */
-const stdCharsets = [{
-  name: 'lowercase',
-  re: /[a-z]/, // abcdefghijklmnopqrstuvwxyz
-  length: 26
-}, {
-  name: 'uppercase',
-  re: /[A-Z]/, // ABCDEFGHIJKLMNOPQRSTUVWXYZ
-  length: 26
-}, {
-  name: 'numbers',
-  re: /[0-9]/, // 1234567890
-  length: 10
-}, {
-  name: 'symbols',
-  re: /[^a-zA-Z0-9]/, //  !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~ (and any other)
-  length: 33
-}]
+var stdCharsets = [{
+        name: 'lowercase',
+        re: /[a-z]/,
+        length: 26
+    }, {
+        name: 'uppercase',
+        re: /[A-Z]/,
+        length: 26
+    }, {
+        name: 'numbers',
+        re: /[0-9]/,
+        length: 10
+    }, {
+        name: 'symbols',
+        re: /[^a-zA-Z0-9]/,
+        length: 33
+    }];
 
 /**
  * Creates a function to calculate the total charset length of a string based on
@@ -52,10 +53,13 @@ const stdCharsets = [{
  * @returns {Function}         a function that will receive a string and return
  *                             the total charset length.
  */
-const calcCharsetLengthWith = charsets =>
-  string =>
-    charsets.reduce((length, charset) =>
-      length + (charset.re.test(string) ? charset.length : 0), 0)
+var calcCharsetLengthWith = function (charsets) {
+    return function (string) {
+        return charsets.reduce(function (length, charset) {
+            return length + (charset.re.test(string) ? charset.length : 0);
+        }, 0);
+    };
+};
 
 /**
  * Helper function to calculate the total charset lengths of a given string
@@ -63,7 +67,7 @@ const calcCharsetLengthWith = charsets =>
  *
  * @type {Function}
  */
-const calcCharsetLength = calcCharsetLengthWith(stdCharsets)
+var calcCharsetLength = calcCharsetLengthWith(stdCharsets);
 
 /**
  * Calculate the given password entropy.
@@ -71,5 +75,6 @@ const calcCharsetLength = calcCharsetLengthWith(stdCharsets)
  * @param   {string} string is the password string.
  * @returns {number}        [the calculated entropy.
  */
-export const passwordEntropy = string =>
-  string ? calcEntropy(calcCharsetLength(string), string.length) : 0
+export var passwordEntropy = function (string) {
+    return string ? calcEntropy(calcCharsetLength(string), string.length) : 0;
+};

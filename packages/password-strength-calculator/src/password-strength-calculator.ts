@@ -2,7 +2,7 @@
  * TODO: Rename this file
  */
 
-export abstract class PasswordStrengthCalculator {
+export class PasswordStrengthCalculator {
 
     constructor(
         readonly components: ((password: string) => EvalResult)[],
@@ -33,7 +33,7 @@ export interface EvalResult {
     recommendations: { [language: string]: PasswordRecommendation[] }
 }
 
-interface PasswordRecommendation {
+export interface PasswordRecommendation {
     text: string,
     weight: number
 }
