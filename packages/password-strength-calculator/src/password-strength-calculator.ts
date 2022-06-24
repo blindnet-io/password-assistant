@@ -1,7 +1,3 @@
-/**
- * TODO: Rename this file
- */
-
 export class PasswordStrengthCalculator {
 
     constructor(
@@ -30,10 +26,12 @@ export class PasswordStrengthCalculator {
 export interface EvalResult {
     pass: boolean,
     score: number,
-    recommendations: { [language: string]: PasswordRecommendation[] }
+    recommendations: {
+        [language: string]: PasswordRecommendation[]
+    }
 }
 
 export interface PasswordRecommendation {
-    text: string,
+    text: string
     weight: number
 }

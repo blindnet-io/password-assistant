@@ -1,5 +1,19 @@
 'use strict';
 
+import * as Console from "console";
+import * as console from "console";
+
+interface EntropyResult {
+    entropy: number,
+    charsets: Charset[]
+}
+
+interface Charset {
+    name: string,
+    re: RegExp,
+    length: number
+}
+
 /**
  * Calculate the entropy of a string based on the size of the charset used and
  * the length of the string.
@@ -7,12 +21,12 @@
  * Based on:
  * http://resources.infosecinstitute.com/password-security-complexity-vs-length/
  *
- * @param   {number} charset is the size of the string charset.
- * @param   {number} length  is the length of the string.
- * @returns {number}         the calculated entropy.
+ * @param   {number} charsetLength is the size of the string charset.
+ * @param   {number} stringLength  is the length of the string.
+ * @returns {number}               the calculated entropy.
  */
-var calcEntropy = function (charset, length) {
-    return Math.round(length * Math.log(charset) / Math.LN2);
+const calcEntropy = (charsetLength: number, stringLength: number): number => {
+    return Math.round(stringLength * Math.log(charsetLength) / Math.LN2);
 };
 
 /**
@@ -24,57 +38,50 @@ var calcEntropy = function (charset, length) {
  *
  * @type {Array}
  */
-var stdCharsets = [{
-        name: 'lowercase',
-        re: /[a-z]/,
-        length: 26
-    }, {
-        name: 'uppercase',
-        re: /[A-Z]/,
-        length: 26
-    }, {
-        name: 'numbers',
-        re: /[0-9]/,
-        length: 10
-    }, {
-        name: 'symbols',
-        re: /[^a-zA-Z0-9]/,
-        length: 33
-    }];
+const stdCharsets: Charset[] = [{
+    name: 'lowercase',
+    re: /[a-z]/,
+    length: 26
+}, {
+    name: 'uppercase',
+    re: /[A-Z]/,
+    length: 26
+}, {
+    name: 'numbers',
+    re: /[0-9]/,
+    length: 10
+}, {
+    name: 'symbols',
+    re: /[^a-zA-Z0-9]/,
+    length: 33
+}];
 
-/**
- * Creates a function to calculate the total charset length of a string based on
- * the given charsets.
- *
- * @param  {Object[]} charsets are description of each charset. Shall contain a
- *                             regular expression `re` to identify each
- *                             character and a `length` with the total possible
- *                             characters in the set.
- * @returns {Function}         a function that will receive a string and return
- *                             the total charset length.
- */
-var calcCharsetLengthWith = function (charsets) {
-    return function (string) {
-        return charsets.reduce(function (length, charset) {
-            return length + (charset.re.test(string) ? charset.length : 0);
-        }, 0);
-    };
-};
+const calcIncludedCharsets =
+    (charsets: Charset[], testString: string): Charset[] =>
+        charsets.filter((charset) => charset.re.test(testString))
 
-/**
- * Helper function to calculate the total charset lengths of a given string
- * using the standard character sets.
- *
- * @type {Function}
- */
-var calcCharsetLength = calcCharsetLengthWith(stdCharsets);
+const calcIncludedCharsetsLength = (charsets: Charset[]): number =>
+    charsets.reduce((length, charset) =>
+        length + charset.length, 0)
+
 
 /**
  * Calculate the given password entropy.
  *
- * @param   {string} string is the password string.
  * @returns {number}        [the calculated entropy.
+ * @param password
  */
-export var passwordEntropy = function (string) {
-    return string ? calcEntropy(calcCharsetLength(string), string.length) : 0;
+export const passwordEntropy = (password: string): EntropyResult => {
+
+    if (password) {
+        // Determine the included charsets and their total length
+        const inclCharsets = calcIncludedCharsets(stdCharsets, password)
+        const inclCharsetsLength = calcIncludedCharsetsLength(inclCharsets)
+        return {
+            entropy: calcEntropy(inclCharsetsLength, password.length),
+            charsets: inclCharsets
+        }
+    } else {
+        return {entropy: 0, charsets: []}
+    }
 };
