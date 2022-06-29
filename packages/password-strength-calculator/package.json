@@ -22,7 +22,6 @@
     "url": "git+https://jboileau99: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@github.com/blindnet-io/password-assistant.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1",
     "tsc": "tsc"
   },
   "bugs": {
