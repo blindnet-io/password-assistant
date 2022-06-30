@@ -1,32 +1,3 @@
-# Old Readme
-
-# Blindnet password-strength-calculator
-
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org)
-
-## Development Setup
-
-### Prerequisites
-
-1. Install node
-2. Clone this repository
-
-### Installation
-
-From the root (/password-assistant) directory:
-
-1. Install dependencies from npm and/or link local dependencies
-    ```
-    npx lerna bootstrap
-    ```
-
-2. Compile all typescript files
-    ```
-    lerna run tsc
-    ```
-
-# New Readme
-
 <h1 align="center">
   blindnet devkit<br />
   password-assistant
@@ -67,17 +38,22 @@ It includes:
 
 :rocket: Check out our [Quick Start Guide](https://blindnet.dev/docs/quickstart) to get started in a snap.
 
-## Installation
+[//]: # (## Installation)
 
-Use [{package manager or plateform}][install-tool] to install {project's name}:
+[//]: # ()
+[//]: # (Use [{package manager or plateform}][install-tool] to install {project's name}:)
 
-```bash
-{install-command}
-```
+[//]: # ()
+[//]: # (```bash)
 
-## Usage
+[//]: # ({install-command})
 
-📑 The API reference of {type of project, e.g. this SDK} is available on [blindnet.dev](https://blindnet.dev/docs/api_reference/[path-to-project}/latest).
+[//]: # (```)
+
+[//]: # (## Usage)
+
+[//]: # ()
+[//]: # (📑 The API reference of {type of project, e.g. this SDK} is available on [blindnet.dev]&#40;https://blindnet.dev/docs/api_reference/[path-to-project}/latest&#41;.)
 
 ## Development
 
@@ -133,8 +109,7 @@ Stay up to date with new releases and projects, learn more about how to protect 
 ## License
 
 The blindnet devkit password-assistant is available under [MIT][license] (and 
-[here]
-(https://github.com/blindnet-io/openness-framework/blob/main/docs/decision-records/DR-0001-oss-license.md) is why).
+[here](https://github.com/blindnet-io/openness-framework/blob/main/docs/decision-records/DR-0001-oss-license.md) is why).
 
 <!-- project's URLs -->
 [new-issue]: https://github.com/blindnet-io/{project-short-name}/issues/new/choose
