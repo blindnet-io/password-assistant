@@ -114,7 +114,6 @@ The blindnet devkit password-assistant is available under [MIT][license] (and
 <!-- project's URLs -->
 [new-issue]: https://github.com/blindnet-io/{project-short-name}/issues/new/choose
 [fork]: https://github.com/blindnet-io/{project-short-name}/fork
-[install-tool]:
 
 <!-- common URLs -->
 [devkit]: https://github.com/blindnet-io/blindnet.dev
